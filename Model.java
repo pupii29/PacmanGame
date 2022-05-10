@@ -26,7 +26,15 @@ public class Model extends JPanel implements ActionListener {
     public Model(){
         loadImages();
     }
-
+    private void drawScore(Graphics2D g){
+        g.setFont(smallFont);
+        g.setColor(new Color(10,200,90));
+        String s ="Scores: "+score;
+        g.drawString(s,SCREEN_SIZE/2+96,SCREEN_SIZE+16);
+        for(int i=0;i<lives;i++){
+            g.drawImage(heart,i*28+8,SCREEN_SIZE+1,this);
+        }
+    }
     private void loadImages(){
         down = new ImageIcon("/src/images/down.gif").getImage();
         up = new ImageIcon("/src/images/up.gif").getImage();
