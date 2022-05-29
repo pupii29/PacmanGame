@@ -82,12 +82,12 @@ public class Model extends JPanel implements ActionListener {
             g.drawImage(heart,i*28+8,SCREEN_SIZE+1,this);
         }
     }
-<<<<<<< HEAD
+
     private void drawMaze(Graphics2D g2d) {
 
         short i = 0;
         int x, y;
-=======
+
     private void drawMaze(Graphics2D g2d){
         short i=0;
         int x,y;
@@ -128,7 +128,7 @@ public class Model extends JPanel implements ActionListener {
         }
     }
     private void initVariables() {
->>>>>>> 7813e9a8bdcd4763f604ac848de289d9b85f59b3
+
 
         for (y = 0; y < SCREEN_SIZE; y += BLOCK_SIZE) {
             for (x = 0; x < SCREEN_SIZE; x += BLOCK_SIZE) {
