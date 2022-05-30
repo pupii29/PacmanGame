@@ -29,11 +29,13 @@ public class Model extends JPanel implements ActionListener {
 
     private Image heart, ghost;
     private Image up, down, left, right;
-
+    private Color mazeColor = new Color(5, 100, 5);
+    private final Color dotColor = new Color(192, 192, 0);
+    
 
     private int pacman_x, pacman_y, pacmand_x, pacmand_y;
     private int req_dx, req_dy;
-   // MAP
+   // MAP1
     private final short levelData[] = {
             19, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
             17, 16, 16, 16, 16, 24, 16, 16, 16, 16, 16, 16, 16, 16, 20,
@@ -51,6 +53,26 @@ public class Model extends JPanel implements ActionListener {
             17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 20,
             25, 24, 24, 24, 26, 24, 24, 24, 24, 24, 24, 24, 24, 24, 28
     };
+    
+    //MAP2
+    private final short levelData_2[] = {
+            19, 26, 26, 26, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
+            21, 0, 0, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+            21, 0, 0, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+            21, 0, 0, 0, 17, 16, 16, 24, 16, 16, 16, 16, 16, 16, 20,
+            17, 18, 18, 18, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 20,
+            17, 16, 16, 16, 16, 16, 20, 0, 17, 16, 16, 16, 16, 24, 20,
+            25, 16, 16, 16, 24, 24, 28, 0, 25, 24, 24, 16, 20, 0, 21,
+            1, 17, 16, 20, 0, 0, 0, 0, 0, 0, 0, 17, 20, 0, 21,
+            1, 17, 16, 16, 18, 18, 22, 0, 19, 18, 18, 16, 20, 0, 21,
+            1, 17, 16, 16, 16, 16, 20, 0, 17, 16, 16, 16, 20, 0, 21,
+            1, 17, 16, 16, 16, 16, 20, 0, 17, 16, 16, 16, 20, 0, 21,
+            1, 17, 16, 16, 16, 16, 16, 18, 16, 16, 16, 16, 20, 0, 21,
+            1, 17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20, 0, 21,
+            1, 25, 24, 24, 24, 24, 24, 24, 24, 24, 16, 16, 16, 18, 20,
+            9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 25, 24, 24, 24, 28
+    };
+        
     private final int validSpeeds[] = {1,2,3,4,6,8};
     private final int maxSpeed = 6;
 
@@ -83,47 +105,43 @@ public class Model extends JPanel implements ActionListener {
         }
     }
 
+  
+    //DRAW MAP1
     private void drawMaze(Graphics2D g2d) {
 
         short i = 0;
         int x, y;
 
-    private void drawMaze(Graphics2D g2d){
-        short i=0;
-        int x,y;
-        for(y=0;y<SCREEN_SIZE;y+=BLOCK_SIZE){
-             for (x = 0; x < SCREEN_SIZE; x += BLOCK_SIZE) {
-            g2d.setColor(new Color(10,50,200));
-            g2d.setStroke(new BasicStroke(5));
-            if ((levelData[i] == 0)) {
-                    g2d.fillRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
-                }
+        for (y = 0; y < SCREEN_SIZE; y += BLOCK_SIZE) {
+            for (x = 0; x < SCREEN_SIZE; x += BLOCK_SIZE) {
 
-                if ((screenData[i] & 1) != 0) {
+                g2d.setColor(mazeColor);
+                g2d.setStroke(new BasicStroke(2));
+
+                if ((screenData[i] & 1) != 0) { 
                     g2d.drawLine(x, y, x, y + BLOCK_SIZE - 1);
                 }
 
-                if ((screenData[i] & 2) != 0) {
+                if ((screenData[i] & 2) != 0) { 
                     g2d.drawLine(x, y, x + BLOCK_SIZE - 1, y);
                 }
 
-                if ((screenData[i] & 4) != 0) {
+                if ((screenData[i] & 4) != 0) { 
                     g2d.drawLine(x + BLOCK_SIZE - 1, y, x + BLOCK_SIZE - 1,
                             y + BLOCK_SIZE - 1);
                 }
 
-                if ((screenData[i] & 8) != 0) {
+                if ((screenData[i] & 8) != 0) { 
                     g2d.drawLine(x, y + BLOCK_SIZE - 1, x + BLOCK_SIZE - 1,
                             y + BLOCK_SIZE - 1);
                 }
 
-                if ((screenData[i] & 16) != 0) {
-                    g2d.setColor(new Color(255,255,255));
-                    g2d.fillOval(x + 10, y + 10, 6, 6);
+                if ((screenData[i] & 16) != 0) { 
+                    g2d.setColor(dotColor);
+                    g2d.fillRect(x + 11, y + 11, 2, 2);
                 }
 
                 i++;
-            
             }
         }
     }
@@ -172,8 +190,8 @@ public class Model extends JPanel implements ActionListener {
         up = new ImageIcon("/src/images/up.gif").getImage();
         left = new ImageIcon("/src/images/left.gif").getImage();
         right = new ImageIcon("/src/images/right.gif").getImage();
-        ghost=new ImageIcon("/src/images/ghost.gif").getImage();
-        heart=new ImageIcon("/src/images/heart.gif").getImage();
+        ghost= new ImageIcon("/src/images/ghost.gif").getImage();
+        heart= new ImageIcon("/src/images/heart.gif").getImage();
     }
     private void drawGhost(Graphics2D g2d, int x, int y) {
         g2d.drawImage(ghost, x, y, this);
@@ -412,7 +430,7 @@ public class Model extends JPanel implements ActionListener {
     private void initLevel(){
         int i;
         for(i=0;i<N_BLOCKS * N_BLOCKS;i++){
-            screenData[i]=levelData[i];
+            screenData[i] = levelData[i];
         }
         continueLevel();
     }
