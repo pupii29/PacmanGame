@@ -145,46 +145,9 @@ public class Model extends JPanel implements ActionListener {
             }
         }
     }
-    private void initVariables() {
+   
 
-
-        for (y = 0; y < SCREEN_SIZE; y += BLOCK_SIZE) {
-            for (x = 0; x < SCREEN_SIZE; x += BLOCK_SIZE) {
-
-                g2d.setColor(new Color(0,72,251));
-                g2d.setStroke(new BasicStroke(5));
-
-                if ((levelData[i] == 0)) {
-                    g2d.fillRect(x, y, BLOCK_SIZE, BLOCK_SIZE);
-                }
-
-                if ((screenData[i] & 1) != 0) {
-                    g2d.drawLine(x, y, x, y + BLOCK_SIZE - 1);
-                }
-
-                if ((screenData[i] & 2) != 0) {
-                    g2d.drawLine(x, y, x + BLOCK_SIZE - 1, y);
-                }
-
-                if ((screenData[i] & 4) != 0) {
-                    g2d.drawLine(x + BLOCK_SIZE - 1, y, x + BLOCK_SIZE - 1,
-                            y + BLOCK_SIZE - 1);
-                }
-
-                if ((screenData[i] & 8) != 0) {
-                    g2d.drawLine(x, y + BLOCK_SIZE - 1, x + BLOCK_SIZE - 1,
-                            y + BLOCK_SIZE - 1);
-                }
-
-                if ((screenData[i] & 16) != 0) {
-                    g2d.setColor(new Color(255,255,255));
-                    g2d.fillOval(x + 10, y + 10, 6, 6);
-                }
-
-                i++;
-            }
-        }
-    }
+           
     private void loadImages(){
         down = new ImageIcon("/src/images/down.gif").getImage();
         up = new ImageIcon("/src/images/up.gif").getImage();
