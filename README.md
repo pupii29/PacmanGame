@@ -1,6 +1,6 @@
 # PacmanGame
 
- **I) Introduction**(h2)
+ <h1>**I) Introduction**</h2>
  <p> a) Team:
   Our team's name is CHVN (Can, Hung, Vinh, Nam) and these are our nembers:
       1. Mai Lê Hùng - ITITIU19125 (team leader)
