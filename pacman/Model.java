@@ -442,7 +442,7 @@ public class Model extends JPanel implements ActionListener {
             } else {
                 if (key == KeyEvent.VK_SPACE) {
                     inGame = true;
-                    // initGame();
+                    initGame();
                 }
             }
         }
