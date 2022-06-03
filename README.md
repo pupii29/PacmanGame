@@ -1,4 +1,4 @@
-<h1 style="color:blue;">PacmanGame</h1>
+<h1 style="text-align:center;">PacmanGame</h1>
 
  <h2>I) Introduction</h2>
  <p> a) Team:
