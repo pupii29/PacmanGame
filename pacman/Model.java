@@ -5,12 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.*;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Model extends JPanel implements ActionListener {
-
+    private int count = 0;
     private Dimension d;
     private final Font smallFont = new Font("Times New Roman", Font.BOLD, 14);
     private boolean inGame = false;
@@ -31,11 +34,11 @@ public class Model extends JPanel implements ActionListener {
     private Image up, down, left, right;
     private Color mazeColor = new Color(5, 100, 5);
     private final Color dotColor = new Color(192, 192, 0);
-    
+
     private int pacman_x, pacman_y, pacmand_x, pacmand_y;
     private int req_dx, req_dy;
 
-   // MAP1
+    // MAP1
     private final short levelData[] = {
             19, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
             17, 16, 16, 16, 16, 24, 16, 16, 16, 16, 16, 16, 16, 16, 20,
@@ -53,7 +56,7 @@ public class Model extends JPanel implements ActionListener {
             17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 20,
             25, 24, 24, 24, 26, 24, 24, 24, 24, 24, 24, 24, 24, 24, 28
     };
-    
+
     //MAP2
     private final short levelData_2[] = {
             19, 26, 26, 26, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
@@ -72,7 +75,7 @@ public class Model extends JPanel implements ActionListener {
             0, 25, 24, 24, 24, 24, 24, 24, 24, 24, 16, 16, 16, 18, 20,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 24, 28
     };
-        
+
     private final int validSpeeds[] = {1,2,3,4,6,8};
     private final int maxSpeed = 6;
 
@@ -102,7 +105,7 @@ public class Model extends JPanel implements ActionListener {
         }
     }
 
-  
+
     //DRAW MAP1
     private void drawMaze(Graphics2D g2d) {
 
@@ -118,24 +121,24 @@ public class Model extends JPanel implements ActionListener {
                 if ((levelData_2[i] == 0)) {
                     g2d.fillRect(x, y, blockSize, blockSize);
                 }
-                if ((screenData[i] & 1) != 0) { 
+                if ((screenData[i] & 1) != 0) {
                     g2d.drawLine(x, y, x, y + blockSize - 1);
                 }
-                if ((screenData[i] & 2) != 0) { 
+                if ((screenData[i] & 2) != 0) {
                     g2d.drawLine(x, y, x + blockSize - 1, y);
                 }
 
-                if ((screenData[i] & 4) != 0) { 
+                if ((screenData[i] & 4) != 0) {
                     g2d.drawLine(x + blockSize - 1, y, x + blockSize - 1,
                             y + blockSize - 1);
                 }
 
-                if ((screenData[i] & 8) != 0) { 
+                if ((screenData[i] & 8) != 0) {
                     g2d.drawLine(x, y + blockSize - 1, x + blockSize - 1,
                             y + blockSize - 1);
                 }
 
-                if ((screenData[i] & 16) != 0) { 
+                if ((screenData[i] & 16) != 0) {
                     g2d.setColor(dotColor);
                     g2d.fillRect(x + 11, y + 11, 2, 2);
                 }
@@ -144,7 +147,7 @@ public class Model extends JPanel implements ActionListener {
             }
         }
     }
-   
+
 
     private void loadImages() {
         down = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\down.gif").getImage();
@@ -233,7 +236,7 @@ public class Model extends JPanel implements ActionListener {
     private void moveGhosts(Graphics2D g2d) {
         int pos;
         int count;
-        
+
         for (int i = 0; i < nGhosts; i++) {
             if (ghost_x[i] % blockSize == 0 && ghost_y[i] % blockSize == 0) {
                 pos = ghost_x[i] / blockSize + nBlocks * (int) (ghost_y[i] / blockSize);
@@ -300,7 +303,7 @@ public class Model extends JPanel implements ActionListener {
             }
         }
     }
-    
+
     private void death() {
         lives--;
         if (lives == 0) {
@@ -390,16 +393,25 @@ public class Model extends JPanel implements ActionListener {
         req_dy = 0;
         dying = false;
     }
-
     private void initGame() {
         lives =3;
         score =0;
         initLevel();
         nGhosts=6;
         currentSpeed = 3;
-
     }
-    
+    private void initGame2() {
+        PlayMusic x = new PlayMusic();
+        lives =3;
+        score =0;
+        initLevel();
+        nGhosts=6;
+        currentSpeed = 3;
+        if(inGame){
+            PlayMusic.playMusic("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\sound\\Wakawaka-Sound.wav");
+        }
+    }
+
     private void initLevel(){
         int i;
         for(i=0;i<nBlocks * nBlocks;i++){
@@ -420,7 +432,6 @@ public class Model extends JPanel implements ActionListener {
 
         @Override
         public void keyPressed(KeyEvent e) {
-
             int key = e.getKeyCode();
 
             if (inGame) {
@@ -438,11 +449,18 @@ public class Model extends JPanel implements ActionListener {
                     req_dy = 1;
                 } else if (key == KeyEvent.VK_ESCAPE && timer.isRunning()) {
                     inGame = false;
-                } 
+                }
             } else {
                 if (key == KeyEvent.VK_SPACE) {
-                    inGame = true;
-                    initGame();
+                    if(count ==0) {
+                        inGame = true;
+                        initGame2();
+                        count++;
+                    }
+                    else {
+                        inGame = true;
+                        initGame();
+                    }
                 }
             }
         }

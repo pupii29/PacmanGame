@@ -10,7 +10,7 @@ public class PlayMusic {
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(path));
             Clip clip = AudioSystem.getClip();
             clip.open(inputStream);
-            clip.loop(0);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
         } catch (UnsupportedAudioFileException e) {
             e.printStackTrace();
         } catch (IOException e) {
