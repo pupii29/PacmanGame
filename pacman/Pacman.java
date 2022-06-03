@@ -9,11 +9,12 @@ public class Pacman extends JFrame{
     }
 
     public static void main(String[] args) {
-        Pacman pac = new Pacman();
-        pac.setVisible(true);
-        pac.setTitle("Pacman");
-        pac.setSize(380,420);
-        pac.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        pac.setLocationRelativeTo(null);
+        Pacman pacman = new Pacman();
+        pacman.setVisible(true);
+        PlayMusic.playMusic("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\sound\\pacmantheme.wav");
+        pacman.setTitle("Pacman game of team CHVN");
+        pacman.setSize(380,420);
+        pacman.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pacman.setLocationRelativeTo(null);
     }
 }
