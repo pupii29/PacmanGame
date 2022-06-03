@@ -37,6 +37,7 @@ Java Swing is a GUI Framework that contains a set of classes to provide more pow
 Swing classes are defined in javax.swing package and its sub-packages.<br></p>
 <hr>
 <h2>III) Class Diagram</h2>
+<img src="https://www.redbrick.me/wp-content/uploads/2020/09/pokemon-black.jpg" alt="pokemon black">
 
  
    
