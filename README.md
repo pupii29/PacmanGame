@@ -2,7 +2,7 @@
 
  <h2>I) Introduction.</h2>
  <p><strong>a) Team:</strong><br>
-   Our team's name is CHVN (Can, Hung, Vinh, Nam) and these are our nembers:</p>
+   Our team's name is CHVN (Can, Hung, Vinh, Nam) and these are our nembers:
       <ol><li>Mai Lê Hùng - ITITIU19125 (team leader)</li>
       <li>Nguyễn Cần  - ITITIU20171</li>
       <li>Huỳnh Văn Vĩnh  - ITITIU19248</li>
@@ -15,7 +15,7 @@
    
       Pac-man is a game that all of our members play when they first come into contact with the Internet. And we all love this game so much that we decided to choose this game as a project for OOP.
       
-   d) Contributions: 
+   d) Contributions:</p>
    
    
 
