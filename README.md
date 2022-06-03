@@ -1,4 +1,4 @@
-# PacmanGame
+<h1> PacmanGame</h1>
 
  <h1>**I) Introduction**</h2>
  <p> a) Team:
