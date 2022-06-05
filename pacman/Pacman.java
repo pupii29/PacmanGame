@@ -5,7 +5,8 @@ import javax.swing.JFrame;
 public class Pacman extends JFrame{
 
     public Pacman() {
-        PlayMusic.playMusic("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\sound\\pacmantheme.wav");
+        //PlayMusic.playMusic("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\sound\\pacmantheme.wav");
+        //PlayMusic.playMusic("/Users/nguyencan/Desktop/clone/PacmanGame/sound/pacmantheme.wav");
         add(new Model());
     }
 
