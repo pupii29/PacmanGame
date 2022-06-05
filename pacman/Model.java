@@ -167,14 +167,15 @@ public int getRandomNumberUsingNextInt(int min, int max) {
     }
 
 
-    /*private void loadImages() {
+    private void loadImages() {
         down = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\down.gif").getImage();
         up = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\up.gif").getImage();
         left = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\left.gif").getImage();
         right = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\right.gif").getImage();
         ghost = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\ghost.gif").getImage();
         heart = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\heart.png").getImage();
-    }*/
+    }
+    /*
     private void loadImages() {
         down = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/down.gif").getImage();//down
         up = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/up.gif").getImage();//up
@@ -182,7 +183,7 @@ public int getRandomNumberUsingNextInt(int min, int max) {
         right = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/right.gif").getImage();//right
         ghost = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/ghost.gif").getImage();//ghost
         heart = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/heart.png").getImage();//heart
-    }
+    }*/
 
     private void drawGhost(Graphics2D g2d, int x, int y) {
         g2d.drawImage(ghost, x, y, this);
