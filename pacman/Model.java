@@ -455,8 +455,8 @@ drawHeart(g2d, heart_x, heart_y);
         nGhosts=6;
         currentSpeed = 3;
         if(inGame){
-            //PlayMusic.playMusic("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\sound\\Wakawaka-Sound.wav");
-            PlayMusic.playMusic("/Users/nguyencan/Desktop/clone/PacmanGame/sound/pacmantheme.wav");
+            PlayMusic.playMusic("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\sound\\Wakawaka-Sound.wav");
+            //PlayMusic.playMusic("/Users/nguyencan/Desktop/clone/PacmanGame/sound/pacmantheme.wav");
         }
     }
 
