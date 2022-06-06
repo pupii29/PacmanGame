@@ -143,7 +143,7 @@ public int getRandomNumberUsingNextInt(int min, int max) {
     }
 
 
-    //DRAW MAP1
+    //DRAW MAP
     private void drawMaze(Graphics2D g2d) {
 
         short i = 0;
@@ -177,7 +177,7 @@ public int getRandomNumberUsingNextInt(int min, int max) {
 
                 if ((screenData[i] & 16) != 0) {
                     g2d.setColor(dotColor);
-                    g2d.fillRect(x + 11, y + 11, 2, 2);
+                    g2d.fillOval(x + 11, y + 11, 3, 3);
                 }
 
                 i++;
@@ -478,11 +478,11 @@ drawHeart(g2d, heart_x, heart_y);
             //PlayMusic.playMusic("/Users/nguyencan/Desktop/clone/PacmanGame/sound/pacmantheme.wav");
         }
     }
-
+    
     private void initLevel(){
         int i;
         for(i=0;i<nBlocks * nBlocks;i++){
-            screenData[i] = levelData_2[i];
+            screenData[i] = levelData_2[i]; //<---DRAW MAP2
         }
         continueLevel();
     }
