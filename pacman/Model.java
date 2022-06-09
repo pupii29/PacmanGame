@@ -32,8 +32,11 @@ public class Model extends JPanel implements ActionListener {
 
     private Image heart, ghost;
     private Image up, down, left, right;
-    private Color mazeColor = new Color(5, 100, 5);
+    private Color mazeColor = new Color(0, 255, 127);
+    private Color mazeColor2 = new Color(255, 236, 139);
+    private Color black = new Color(255, 236, 139);
     private final Color dotColor = new Color(52, 179, 241);
+    private int check = 0;
 
     private int pacman_x, pacman_y, pacmand_x, pacmand_y;
     private int req_dx, req_dy;
@@ -245,7 +248,7 @@ public int getHeart_y(int x) {
 
                 if ((screenData[i] & 16) != 0) {
                     g2d.setColor(dotColor);
-                    g2d.fillOval(x + 10, y + 10, 6, 6);
+                    g2d.fillOval(x + 10, y + 10, 3, 3);
                 }
 
                 i++;
@@ -254,13 +257,16 @@ public int getHeart_y(int x) {
     }
     private void drawMazeLevel2(Graphics2D g2d) {
 
+        g2d.setColor(Color.black);
+        g2d.fillRect(0, 0, d.width+2000, d.height+200);
+
         short i = 0;
         int x, y;
 
         for (y = 0; y < screenSize; y += blockSize) {
             for (x = 0; x < screenSize; x += blockSize) {
 
-                g2d.setColor(mazeColor);
+                g2d.setColor(mazeColor2);
                 g2d.setStroke(new BasicStroke(5));
 
                 if ((levelData_2[i] == 0)) {
@@ -285,7 +291,7 @@ public int getHeart_y(int x) {
 
                 if ((screenData[i] & 16) != 0) {
                     g2d.setColor(dotColor);
-                    g2d.fillOval(x + 10, y + 10, 6, 6);
+                    g2d.fillOval(x + 10, y + 10, 3, 3);
                 }
 
                 i++;
@@ -325,10 +331,11 @@ public int getHeart_y(int x) {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(Color.black);
-        g2d.fillRect(0, 0, d.width, d.height);
+        g2d.fillRect(0, 0, d.width+2000, d.height+200);
 
         drawScore(g2d);
         drawMaze(g2d);
+
 
         if (inGame) {
 
@@ -339,9 +346,22 @@ public int getHeart_y(int x) {
             showIntroScreen(g2d);
         }
 
+        if (check == 1){
+            drawMazeLevel2(g2d);
+            if (inGame) {
+
+                playGame(g2d);
+            } else if(lives == 0){
+                showGameOverScreen(g2d);
+            } else {
+                showIntroScreen(g2d);
+            }
+        }
+
         Toolkit.getDefaultToolkit().sync();
         g2d.dispose();
     }
+
 
     //gamelogic
     private void movePacman(Graphics2D g2d) {
