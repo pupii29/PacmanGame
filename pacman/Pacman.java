@@ -18,5 +18,6 @@ public class Pacman extends JFrame{
         pacman.setDefaultCloseOperation(EXIT_ON_CLOSE);
         pacman.setLocationRelativeTo(null);
         pacman.setResizable(false);
+
     }
 }
