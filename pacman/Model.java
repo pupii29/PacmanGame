@@ -104,9 +104,9 @@ public class Model extends JPanel implements ActionListener {
     private Timer timer;
     //heart----
 private boolean healing =false;
-private int maxLives =3;
-private int heart_x;
-private int heart_y;
+private int maxLives =9;
+int heart_x;
+int heart_y;
 private void drawHeart(Graphics2D g2d, int x, int y) {
     g2d.drawImage(heart, x, y, this);
 }
@@ -114,7 +114,6 @@ private void heal() {
     if(lives==maxLives){
         healing=false;
     }else{
-    PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//pop.wav");
     lives++;}
 }
 public int getRandomNumberUsingNextInt(int min, int max) {
@@ -367,7 +366,6 @@ drawHeart(g2d, heart_x, heart_y);
         lives--;
         if (lives == 0) {
             inGame = false;
-            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//gameover.wav");
         }
         continueLevel();
     }
@@ -476,7 +474,7 @@ drawHeart(g2d, heart_x, heart_y);
         nGhosts=6;
         currentSpeed = 3;
         if(inGame){
-            PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//PacmanGame//sound//theme.wav");
+            PlayMusic.playMusic("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\sound\\Wakawaka-Sound.wav");
             //PlayMusic.playMusic("/Users/nguyencan/Desktop/clone/PacmanGame/sound/pacmantheme.wav");
         }
     }
