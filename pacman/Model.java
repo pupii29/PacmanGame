@@ -154,29 +154,27 @@ public int getRandomNumberUsingNextInt(int min, int max) {
             for (x = 0; x < screenSize; x += blockSize) {
 
                 g2d.setColor(mazeColor);
-                g2d.setStroke(new BasicStroke(5));
+                g2d.setStroke(new BasicStroke(2));
 
-                if ((levelData_2[i] == 0)) {
-                    g2d.fillRect(x, y, blockSize, blockSize);
-                }
-                if ((screenData[i] & 1) != 0) {
+                if ((screenData[i] & 1) != 0) { 
                     g2d.drawLine(x, y, x, y + blockSize - 1);
                 }
-                if ((screenData[i] & 2) != 0) {
+
+                if ((screenData[i] & 2) != 0) { 
                     g2d.drawLine(x, y, x + blockSize - 1, y);
                 }
 
-                if ((screenData[i] & 4) != 0) {
+                if ((screenData[i] & 4) != 0) { 
                     g2d.drawLine(x + blockSize - 1, y, x + blockSize - 1,
                             y + blockSize - 1);
                 }
 
-                if ((screenData[i] & 8) != 0) {
+                if ((screenData[i] & 8) != 0) { 
                     g2d.drawLine(x, y + blockSize - 1, x + blockSize - 1,
                             y + blockSize - 1);
                 }
 
-                if ((screenData[i] & 16) != 0) {
+                if ((screenData[i] & 16) != 0) { 
                     g2d.setColor(dotColor);
                     g2d.fillOval(x + 11, y + 11, 3, 3);
                 }
@@ -184,6 +182,8 @@ public int getRandomNumberUsingNextInt(int min, int max) {
                 i++;
             }
         }
+    }
+
     }
 
 
