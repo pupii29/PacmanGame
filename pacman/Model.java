@@ -26,15 +26,14 @@ public class Model extends JPanel implements ActionListener {
     private final int maxGhost = 12;
 
     private int nGhosts = 6;
-    public int lives, score;
+    private int lives, score;
     private int[] dx, dy;
     private int[] ghost_x, ghost_y, ghost_dx, ghost_dy, ghostSpeed;
-    public int[] slime_x, slime_y, slime_dx, slime_dy, slimeSpeed;
 
-    public Image heart, ghost, dmg, slimeImg;
+    private Image heart, ghost;
     private Image up, down, left, right;
     private Color mazeColor = new Color(5, 100, 5);
-    private final Color dotColor = new Color(52, 179, 241);
+    private final Color dotColor = new Color(192, 192, 0);
 
     private int pacman_x, pacman_y, pacmand_x, pacmand_y;
     private int req_dx, req_dy;
@@ -105,7 +104,7 @@ public class Model extends JPanel implements ActionListener {
     private Timer timer;
     //heart----
 private boolean healing =false;
-private int maxLives = 3;
+private int maxLives =5;
 int heart_x;
 int heart_y;
 private void drawHeart(Graphics2D g2d, int x, int y) {
@@ -115,7 +114,8 @@ private void heal() {
     if(lives==maxLives){
         healing=false;
     }else{
-    lives++;}
+    lives++;
+    }
 }
 public int getRandomNumberUsingNextInt(int min, int max) {
     Random random = new Random();
@@ -124,22 +124,15 @@ public int getRandomNumberUsingNextInt(int min, int max) {
 //----
     //setup
     private void showIntroScreen(Graphics2D g2d) {
+        /*String hi = "Hello, welcome to our team game !";
+        g2d.setColor(Color.yellow);
+        g2d.drawString(hi, (screenSize)/6, 100);
+         */
         String start = "Press SPACE to start";
         g2d.setColor(Color.yellow);
         g2d.drawString(start, (screenSize)/4, 150);
     }
-    private void showGameOverScreen(Graphics2D g2d){
-        String over = "Press SPACE to retry";
-        g2d.setColor(Color.yellow);
-        g2d.drawString(over, (screenSize)/4, 150);
-    }
-//    private void showSuccessScreen(Graphics2D g2d){
-//        String won = "You passed the level";
-//        String start_over = "Press SPACE";
-//        g2d.setColor(Color.red);
-//        g2d.drawString(won, (screenSize)/4, 150);
-//        g2d.drawString(start_over, (screenSize)/3, 150);
-//    }
+
     private void drawScore(Graphics2D g){
         g.setFont(smallFont);
         g.setColor(new Color(10,200,90));
@@ -149,50 +142,10 @@ public int getRandomNumberUsingNextInt(int min, int max) {
             g.drawImage(heart, i*28+8, screenSize+1, this);
         }
     }
+
+
     //DRAW MAP
     private void drawMaze(Graphics2D g2d) {
-
-        short i = 0;
-        int x, y;
-
-        for (y = 0; y < screenSize; y += blockSize) {
-            for (x = 0; x < screenSize; x += blockSize) {
-
-                g2d.setColor(mazeColor);
-                g2d.setStroke(new BasicStroke(5));
-
-                if ((levelData[i] == 0)) {
-                    g2d.fillRect(x, y, blockSize, blockSize);
-                }
-                if ((screenData[i] & 1) != 0) {
-                    g2d.drawLine(x, y, x, y + blockSize - 1);
-                }
-                if ((screenData[i] & 2) != 0) {
-                    g2d.drawLine(x, y, x + blockSize - 1, y);
-                }
-
-                if ((screenData[i] & 4) != 0) {
-                    g2d.drawLine(x + blockSize - 1, y, x + blockSize - 1,
-                            y + blockSize - 1);
-                }
-
-                if ((screenData[i] & 8) != 0) {
-                    g2d.drawLine(x, y + blockSize - 1, x + blockSize - 1,
-                            y + blockSize - 1);
-                }
-
-                if ((screenData[i] & 16) != 0) {
-                    g2d.setColor(dotColor);
-                    g2d.fillOval(x + 10, y + 10, 6, 6);
-                }
-
-                i++;
-            }
-        }
-    }
-
-    //Draw map 2
-    private void drawMazeLevel2(Graphics2D g2d) {
 
         short i = 0;
         int x, y;
@@ -225,7 +178,7 @@ public int getRandomNumberUsingNextInt(int min, int max) {
 
                 if ((screenData[i] & 16) != 0) {
                     g2d.setColor(dotColor);
-                    g2d.fillOval(x + 10, y + 10, 6, 6);
+                    g2d.fillOval(x + 11, y + 11, 3, 3);
                 }
 
                 i++;
@@ -233,16 +186,24 @@ public int getRandomNumberUsingNextInt(int min, int max) {
         }
     }
 
+
     private void loadImages() {
-        down = new ImageIcon("../09-06-2022/PacmanGame/images/down.gif").getImage();
-        up = new ImageIcon("../09-06-2022/PacmanGame/images/up.gif").getImage();
-        left = new ImageIcon("../09-06-2022/PacmanGame/images/left.gif").getImage();
-        right = new ImageIcon("../09-06-2022/PacmanGame/images/right.gif").getImage();
-        ghost = new ImageIcon("../09-06-2022/PacmanGame/images/ghost.gif").getImage();
-        heart = new ImageIcon("../09-06-2022/PacmanGame/images/heart.png").getImage();
-        slimeImg = new ImageIcon("../09-06-2022/PacmanGame/images/slime.png").getImage();
-        dmg = new ImageIcon("../09-06-2022/PacmanGame/images/dmg.png").getImage();
+        down = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\down.gif").getImage();
+        up = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\up.gif").getImage();
+        left = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\left.gif").getImage();
+        right = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\right.gif").getImage();
+        ghost = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\ghost.gif").getImage();
+        heart = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\heart.png").getImage();
     }
+    /*
+    private void loadImages() {
+        down = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/down.gif").getImage();//down
+        up = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/up.gif").getImage();//up
+        left = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/left.gif").getImage();//left
+        right = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/right.gif").getImage();//right
+        ghost = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/ghost.gif").getImage();//ghost
+        heart = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/heart.png").getImage();//heart
+    }*/
 
     private void drawGhost(Graphics2D g2d, int x, int y) {
         g2d.drawImage(ghost, x, y, this);
@@ -273,10 +234,7 @@ public int getRandomNumberUsingNextInt(int min, int max) {
         drawMaze(g2d);
 
         if (inGame) {
-
             playGame(g2d);
-        } else if(lives == 0){
-            showGameOverScreen(g2d);
         } else {
             showIntroScreen(g2d);
         }
@@ -289,19 +247,19 @@ public int getRandomNumberUsingNextInt(int min, int max) {
     private void movePacman(Graphics2D g2d) {
 
         int pos;
-        short ch, i = 0;
-        //heart
-        //do {
-        if(lives == maxLives){
+        short ch;
+//heart
+drawHeart(g2d, heart_x, heart_y);
+        if (pacman_x > (heart_x - 1) && pacman_x < (heart_x + 1)
+                && pacman_y > (heart_y - 1) && pacman_y < (heart_y + 1)
+                && inGame) {
+
+            if (lives == maxLives) {
                 healing = false;
-            }else {
-                drawHeart(g2d, heart_x, heart_y);
-                if (pacman_x > (heart_x - 1) && pacman_x < (heart_x + 1)
-                        && pacman_y > (heart_y - 1) && pacman_y < (heart_y + 1)
-                        && inGame) {
+            } else {
                 healing = true;
-            }}
-        //} while((screenData[i] & 48) != 0);
+            }
+        }
 //heart
         if (pacman_x % blockSize == 0 && pacman_y % blockSize == 0) {
             pos = pacman_x / blockSize + nBlocks * (int) (pacman_y / blockSize);
@@ -405,32 +363,29 @@ public int getRandomNumberUsingNextInt(int min, int max) {
         }
     }
 
-    private void death(Graphics2D g2d) {
+    private void death() {
         lives--;
         if (lives == 0) {
             inGame = false;
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//gameover.wav");
+        }
+        else{
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//pop.wav");
         }
         continueLevel();
     }
 
-    private void checkMaze(Graphics2D g2d) {
-
+    private void checkMaze() {
         int i = 0;
         boolean finished = true;
-
-        while (i < nBlocks * nBlocks && finished) {
-
-            if ((screenData[i] & 48) != 0) {
-                finished = false;
+        while (i < nGhosts*nBlocks && finished){
+            if((screenData[i] != 0)){
+                finished=false;
             }
-
             i++;
         }
-
-        if (finished) {
-
+        if(finished) {
             score += 50;
-
             if (nGhosts < maxGhost) {
                 nGhosts++;
             }
@@ -438,7 +393,8 @@ public int getRandomNumberUsingNextInt(int min, int max) {
             if (currentSpeed < maxSpeed) {
                 currentSpeed++;
             }
-            initGame();
+
+            initLevel();
         }
     }
 
@@ -449,16 +405,16 @@ public int getRandomNumberUsingNextInt(int min, int max) {
             heart_y =getRandomNumberUsingNextInt(2,10)*blockSize;
             heal();
             healing=false;
-
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//heal.wav");
         }
         //----
         if (dying) {
-            death(g2d);
+            death();
         } else {
             movePacman(g2d);
             drawPacman(g2d);
             moveGhosts(g2d);
-            checkMaze(g2d);
+            checkMaze();
         }
     }
 
@@ -475,7 +431,7 @@ public int getRandomNumberUsingNextInt(int min, int max) {
         dx = new int[4];
         dy = new int[4];
 
-        timer = new Timer(60, this);
+        timer = new Timer(40, this);
         timer.start();
     }
 
@@ -497,7 +453,7 @@ public int getRandomNumberUsingNextInt(int min, int max) {
                 random = currentSpeed;
             }
 
-            ghostSpeed[i] = validSpeeds[3];
+            ghostSpeed[i] = validSpeeds[random];
         }
 
         pacman_x = 10 * blockSize;  //start position
@@ -508,77 +464,32 @@ public int getRandomNumberUsingNextInt(int min, int max) {
         req_dy = 0;
         dying = false;
     }
-
-    private void continueLevel2(Graphics2D g2d){
-        g2d.clearRect(0,0,getWidth(), getHeight());
-        int dx = 1;
-        int random;
-
-        for (int i = 0; i < nGhosts; i++) {
-
-            ghost_y[i] = 5 * blockSize; //start position
-            ghost_x[i] = 3 * blockSize;
-            ghost_dy[i] = 0;
-            ghost_dx[i] = dx;
-            dx = -dx;
-            random = (int) (Math.random() * (currentSpeed + 1));
-
-            if (random > currentSpeed) {
-                random = currentSpeed;
-            }
-
-            ghostSpeed[i] = validSpeeds[4];
-        }
-
-        pacman_x = 10 * blockSize;  //start position
-        pacman_y = 10 * blockSize;
-        pacmand_x = 0;	//reset direction move
-        pacmand_y = 0;
-        req_dx = 0;		// reset direction controls
-        req_dy = 0;
-        dying = false;
-    }
-
-    //Level starting status
     private void initGame() {
         lives =3;
         score =0;
         initLevel();
-        nGhosts = 2;
-        currentSpeed = 2;
+        nGhosts=6;
+        currentSpeed = 3;
     }
-
-    //Level 2 status
-    private void Game2(Graphics2D g2d) {
-
+    private void initGame2() {
         PlayMusic x = new PlayMusic();
         lives =3;
         score =0;
-        Level2(g2d);
-        nGhosts=3;
-        currentSpeed = 2;
-//        if(inGame){
-//            PlayMusic.playMusic("../PacmanGame/sound/pacman-theme.wav");
-//            //PlayMusic.playMusic("/Users/nguyencan/Desktop/clone/PacmanGame/sound/pacmantheme.wav");
-//        }
-    }
-
-    //Level 1
-    private void initLevel(){
-        int i;
-        for(i=0;i<nBlocks * nBlocks;i++){
-            screenData[i] = levelData[i]; //<---DRAW MAP1
+        initLevel();
+        nGhosts=6;
+        currentSpeed = 3;
+        if(inGame){
+            PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//PacmanGame//sound//theme.wav");
+            //PlayMusic.playMusic("/Users/nguyencan/Desktop/clone/PacmanGame/sound/pacmantheme.wav");
         }
-        continueLevel();
     }
-
-    //Level 2
-    private void Level2(Graphics2D g2d){
+    
+    private void initLevel(){
         int i;
         for(i=0;i<nBlocks * nBlocks;i++){
             screenData[i] = levelData_2[i]; //<---DRAW MAP2
         }
-        continueLevel2(g2d);
+        continueLevel();
     }
 
     public Model(){
@@ -613,9 +524,9 @@ public int getRandomNumberUsingNextInt(int min, int max) {
                 }
             } else {
                 if (key == KeyEvent.VK_SPACE) {
-                    if(count == 0) {
+                    if(count ==0) {
                         inGame = true;
-                        initGame();
+                        initGame2();
                         count++;
                     }
                     else {
