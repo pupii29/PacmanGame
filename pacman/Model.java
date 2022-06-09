@@ -40,40 +40,42 @@ public class Model extends JPanel implements ActionListener {
 
     // MAP1
     private final short levelData[] = {
-            19, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
-            17, 16, 16, 16, 16, 24, 16, 16, 16, 16, 16, 16, 16, 16, 20,
-            25, 24, 24, 24, 28, 0, 17, 16, 16, 16, 16, 16, 16, 16, 20,
-            0,  0,  0,  0,  0,  0, 17, 16, 16, 16, 16, 16, 16, 16, 20,
-            19, 18, 18, 18, 18, 18, 16, 16, 16, 16, 24, 24, 24, 24, 20,
-            17, 16, 16, 16, 16, 16, 16, 16, 16, 20, 0,  0,  0,   0, 21,
-            17, 16, 16, 16, 16, 16, 16, 16, 16, 20, 0,  0,  0,   0, 21,
-            17, 16, 16, 16, 24, 16, 16, 16, 16, 20, 0,  0,  0,   0, 21,
-            17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 18, 18, 18, 18, 20,
-            17, 24, 24, 28, 0, 25, 24, 24, 16, 16, 16, 16, 16, 16, 20,
-            21, 0,  0,  0,  0,  0,  0,   0, 17, 16, 16, 16, 16, 16, 20,
-            17, 18, 18, 22, 0, 19, 18, 18, 16, 16, 16, 16, 16, 16, 20,
-            17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 20,
-            17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 20,
-            25, 24, 24, 24, 26, 24, 24, 24, 24, 24, 24, 24, 24, 24, 28
+        19, 26, 26, 26, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
+        21, 0, 0, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+        21, 0, 0, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+        21, 0, 0, 0, 17, 16, 16, 24, 16, 16, 16, 16, 16, 16, 20,
+        17, 18, 18, 18, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 20,
+        17, 16, 16, 16, 16, 16, 20, 0, 17, 16, 16, 16, 16, 24, 20,
+        25, 16, 16, 16, 24, 24, 28, 0, 25, 24, 24, 16, 20, 0, 21,
+        0, 17, 16, 20, 0, 0, 0, 0, 0, 0, 0, 17, 20, 0, 21,
+        0, 17, 16, 16, 18, 18, 22, 0, 19, 18, 18, 16, 20, 0, 21,
+        0, 17, 16, 16, 16, 16, 20, 0, 17, 16, 16, 16, 20, 0, 21,
+        0, 17, 16, 16, 16, 16, 20, 0, 17, 16, 16, 16, 20, 0, 21,
+        0, 17, 16, 16, 16, 16, 16, 18, 16, 16, 16, 16, 20, 0, 21,
+        0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20, 0, 21,
+        0, 25, 24, 24, 24, 24, 24, 24, 24, 24, 16, 16, 16, 18, 20,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 24, 28
+            
     };
-
+    
     //MAP2
     private final short levelData_2[] = {
-            19, 26, 26, 26, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
-            21, 0, 0, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20,
-            21, 0, 0, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20,
-            21, 0, 0, 0, 17, 16, 16, 24, 16, 16, 16, 16, 16, 16, 20,
-            17, 18, 18, 18, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 20,
-            17, 16, 16, 16, 16, 16, 20, 0, 17, 16, 16, 16, 16, 24, 20,
-            25, 16, 16, 16, 24, 24, 28, 0, 25, 24, 24, 16, 20, 0, 21,
-            0, 17, 16, 20, 0, 0, 0, 0, 0, 0, 0, 17, 20, 0, 21,
-            0, 17, 16, 16, 18, 18, 22, 0, 19, 18, 18, 16, 20, 0, 21,
-            0, 17, 16, 16, 16, 16, 20, 0, 17, 16, 16, 16, 20, 0, 21,
-            0, 17, 16, 16, 16, 16, 20, 0, 17, 16, 16, 16, 20, 0, 21,
-            0, 17, 16, 16, 16, 16, 16, 18, 16, 16, 16, 16, 20, 0, 21,
-            0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20, 0, 21,
-            0, 25, 24, 24, 24, 24, 24, 24, 24, 24, 16, 16, 16, 18, 20,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 24, 28
+        19, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
+    17, 16, 16, 16, 16, 24, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+    25, 24, 24, 24, 28, 0, 17, 16, 16, 16, 16, 16, 16, 16, 20,
+    0,  0,  0,  0,  0,  0, 17, 16, 16, 16, 16, 16, 16, 16, 20,
+    19, 18, 18, 18, 18, 18, 16, 16, 16, 16, 24, 24, 24, 24, 20,
+    17, 16, 16, 16, 16, 16, 16, 16, 16, 20, 0,  0,  0,   0, 21,
+    17, 16, 16, 16, 16, 16, 16, 16, 16, 20, 0,  0,  0,   0, 21,
+    17, 16, 16, 16, 24, 16, 16, 16, 16, 20, 0,  0,  0,   0, 21,
+    17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 18, 18, 18, 18, 20,
+    17, 24, 24, 28, 0, 25, 24, 24, 16, 16, 16, 16, 16, 16, 20,
+    21, 0,  0,  0,  0,  0,  0,   0, 17, 16, 16, 16, 16, 16, 20,
+    17, 18, 18, 22, 0, 19, 18, 18, 16, 16, 16, 16, 16, 16, 20,
+    17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+    17, 16, 16, 20, 0, 17, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+    25, 24, 24, 24, 26, 24, 24, 24, 24, 24, 24, 24, 24, 24, 28
+            
     };
 
     //MAP BOSS
@@ -104,9 +106,9 @@ public class Model extends JPanel implements ActionListener {
     private Timer timer;
     //heart----
 private boolean healing =false;
-private int maxLives = 3;
-int heart_x;
-int heart_y;
+private int maxLives = 9;
+int heart_x=5*blockSize;
+int heart_y=5*blockSize;
 private void drawHeart(Graphics2D g2d, int x, int y) {
     g2d.drawImage(heart, x, y, this);
 }
@@ -120,6 +122,71 @@ private void heal() {
 public int getRandomNumberUsingNextInt(int min, int max) {
     Random random = new Random();
     return random.nextInt(max - min) + min;
+}
+public int getHeart_y(int x) {
+    int y = 0;
+    switch (x) {
+        case 0: {
+            y = getRandomNumberUsingNextInt(0, 6);
+        }
+        case 1, 2, 3: {
+            int z = getRandomNumberUsingNextInt(1, 2);
+            if (z == 1)
+                y = 0;
+            else y = getRandomNumberUsingNextInt(4, 13);
+            break;
+        }
+
+        case 4, 5, 6: {
+            int z = getRandomNumberUsingNextInt(1, 2);
+            if (z == 1)
+                y = getRandomNumberUsingNextInt(0, 6);
+            else y = getRandomNumberUsingNextInt(8, 13);
+            break;
+        }
+
+        case 7: {
+            int z = getRandomNumberUsingNextInt(1, 2);
+            if (z == 1)
+                y = getRandomNumberUsingNextInt(0, 3);
+            else y = getRandomNumberUsingNextInt(11, 13);
+            break;
+        }
+        case 8, 9: {
+            int z = getRandomNumberUsingNextInt(1, 2);
+            if (z == 1)
+                y = getRandomNumberUsingNextInt(0, 3);
+            else y = getRandomNumberUsingNextInt(11, 13);
+            break;
+        }
+
+        case 10: {
+            int z = getRandomNumberUsingNextInt(1, 2);
+            if (z == 1)
+                y = getRandomNumberUsingNextInt(0, 6);
+            else y = getRandomNumberUsingNextInt(8, 14);
+            break;
+        }
+        case 11, 12: {
+            y = getRandomNumberUsingNextInt(0, 14);
+        }
+        ;
+
+        case 13: {
+            int z = getRandomNumberUsingNextInt(1, 2);
+            if (z == 1)
+                y = getRandomNumberUsingNextInt(0, 5);
+            else y = getRandomNumberUsingNextInt(13, 14);
+            break;
+        }
+        case 14: {
+            y = getRandomNumberUsingNextInt(0, 14);
+            break;
+        }
+
+
+    }
+    return y;
 }
 //----
     //setup
@@ -234,7 +301,7 @@ public int getRandomNumberUsingNextInt(int min, int max) {
         ghost = new ImageIcon("../PacmanGame/images/ghost.gif").getImage();
         heart = new ImageIcon("../PacmanGame/images/heart.png").getImage();
     }
-
+    
     private void drawGhost(Graphics2D g2d, int x, int y) {
         g2d.drawImage(ghost, x, y, this);
     }
@@ -431,9 +498,16 @@ public int getRandomNumberUsingNextInt(int min, int max) {
 
     private void playGame(Graphics2D g2d) {
 //heart---
-        if (healing) {
-            heart_x = getRandomNumberUsingNextInt(2,10)*blockSize;
-            heart_y = getRandomNumberUsingNextInt(2,10)*blockSize;
+       
+            if (healing) {
+                heart_x =getRandomNumberUsingNextInt(0,14);
+                heart_y =getHeart_y(heart_x);
+                heart_x*=blockSize;
+                heart_y*=blockSize;
+                if(lives==maxLives){
+                    heart_x=0*blockSize;
+                    heart_y=20*blockSize;
+                }
             heal();
             healing=false;
             PlayMusic.playSound("../PacmanGame/sound/heal.wav");
