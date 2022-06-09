@@ -104,7 +104,7 @@ public class Model extends JPanel implements ActionListener {
     private Timer timer;
     //heart----
 private boolean healing =false;
-private int maxLives =9;
+private int maxLives =5;
 int heart_x;
 int heart_y;
 private void drawHeart(Graphics2D g2d, int x, int y) {
@@ -114,7 +114,8 @@ private void heal() {
     if(lives==maxLives){
         healing=false;
     }else{
-    lives++;}
+    lives++;
+    }
 }
 public int getRandomNumberUsingNextInt(int min, int max) {
     Random random = new Random();
@@ -366,6 +367,10 @@ drawHeart(g2d, heart_x, heart_y);
         lives--;
         if (lives == 0) {
             inGame = false;
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//gameover.wav");
+        }
+        else{
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//pop.wav");
         }
         continueLevel();
     }
@@ -400,7 +405,7 @@ drawHeart(g2d, heart_x, heart_y);
             heart_y =getRandomNumberUsingNextInt(2,10)*blockSize;
             heal();
             healing=false;
-
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//heal.wav");
         }
         //----
         if (dying) {
@@ -474,7 +479,7 @@ drawHeart(g2d, heart_x, heart_y);
         nGhosts=6;
         currentSpeed = 3;
         if(inGame){
-            PlayMusic.playMusic("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\sound\\Wakawaka-Sound.wav");
+            PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//PacmanGame//sound//theme.wav");
             //PlayMusic.playMusic("/Users/nguyencan/Desktop/clone/PacmanGame/sound/pacmantheme.wav");
         }
     }
