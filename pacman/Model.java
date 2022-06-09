@@ -11,7 +11,7 @@ import javax.sound.sampled.*;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
+import java.util.Random;
 public class Model extends JPanel implements ActionListener {
     private int count = 0;
     private Dimension d;
@@ -75,6 +75,25 @@ public class Model extends JPanel implements ActionListener {
             0, 25, 24, 24, 24, 24, 24, 24, 24, 24, 16, 16, 16, 18, 20,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 24, 28
     };
+    
+    //MAP BOSS
+    private final short boss[] = {
+        19, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
+        17, 24, 24, 24, 24, 24, 16, 16, 16, 24, 16, 16, 16, 24, 20,
+        21, 0,  0,  0,  0,  0,  17, 16, 20, 0, 25, 16, 20, 0, 21,
+        21, 0,  19,  18,  18, 18, 16, 16, 20, 0, 0, 25, 20, 0, 21,
+        21, 0,  17, 16, 16, 16, 16, 16, 20, 0, 23, 0, 29, 0, 21,
+        21, 0,  25, 24, 24, 24, 16, 16, 20, 0, 17, 22, 0, 0, 21,
+        21, 0,  0,  0,  0,  0,  17, 16, 20, 0, 17, 16, 22, 0, 21, 
+        17, 18, 18, 18, 18, 18, 16, 16, 16, 18, 16, 16, 16, 18, 20,
+        17, 24, 16, 16, 16, 24, 16, 16, 16, 24, 16, 16, 16, 24, 20, 
+        21, 0, 17, 16, 20, 0, 17, 16, 20, 0, 17, 16, 20, 0, 21, 
+        21, 0, 17, 16, 20, 0, 17, 16, 20, 0, 25, 24, 28, 0, 21, 
+        21, 0, 25, 16, 28, 0, 17, 16, 20, 0, 0, 0, 0, 0, 21, 
+        17, 22, 0, 29, 0, 19, 16, 16, 20, 0, 19, 18, 22, 0, 21,
+        17, 16, 22, 0, 19, 16, 16, 16, 20, 0, 17, 16, 20, 0, 21,
+        25, 24, 24, 26, 24, 24, 24, 24, 24, 26, 24, 24, 24, 26, 28
+    };
 
     private final int validSpeeds[] = {1,2,3,4,6,8};
     private final int maxSpeed = 6;
@@ -83,7 +102,26 @@ public class Model extends JPanel implements ActionListener {
 
     private short[] screenData;
     private Timer timer;
-
+    //heart----
+private boolean healing =false;
+private int maxLives =3;
+private int heart_x;
+private int heart_y;
+private void drawHeart(Graphics2D g2d, int x, int y) {
+    g2d.drawImage(heart, x, y, this);
+}
+private void heal() {
+    if(lives==maxLives){
+        healing=false;
+    }else{
+    PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//pop.wav");
+    lives++;}
+}
+public int getRandomNumberUsingNextInt(int min, int max) {
+    Random random = new Random();
+    return random.nextInt(max - min) + min;
+}
+//----
     //setup
     private void showIntroScreen(Graphics2D g2d) {
         /*String hi = "Hello, welcome to our team game !";
@@ -106,7 +144,7 @@ public class Model extends JPanel implements ActionListener {
     }
 
 
-    //DRAW MAP1
+    //DRAW MAP
     private void drawMaze(Graphics2D g2d) {
 
         short i = 0;
@@ -140,7 +178,7 @@ public class Model extends JPanel implements ActionListener {
 
                 if ((screenData[i] & 16) != 0) {
                     g2d.setColor(dotColor);
-                    g2d.fillRect(x + 11, y + 11, 2, 2);
+                    g2d.fillOval(x + 11, y + 11, 3, 3);
                 }
 
                 i++;
@@ -157,6 +195,15 @@ public class Model extends JPanel implements ActionListener {
         ghost = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\ghost.gif").getImage();
         heart = new ImageIcon("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\image\\heart.png").getImage();
     }
+    /*
+    private void loadImages() {
+        down = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/down.gif").getImage();//down
+        up = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/up.gif").getImage();//up
+        left = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/left.gif").getImage();//left
+        right = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/right.gif").getImage();//right
+        ghost = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/ghost.gif").getImage();//ghost
+        heart = new ImageIcon("/Users/nguyencan/Desktop/clone/PacmanGame/images/heart.png").getImage();//heart
+    }*/
 
     private void drawGhost(Graphics2D g2d, int x, int y) {
         g2d.drawImage(ghost, x, y, this);
@@ -197,11 +244,23 @@ public class Model extends JPanel implements ActionListener {
     }
 
     //gamelogic
-    private void movePacman() {
+    private void movePacman(Graphics2D g2d) {
 
         int pos;
         short ch;
+//heart
+drawHeart(g2d, heart_x, heart_y);
+        if (pacman_x > (heart_x - 1) && pacman_x < (heart_x + 1)
+                && pacman_y > (heart_y - 1) && pacman_y < (heart_y + 1)
+                && inGame) {
 
+            if (lives == maxLives) {
+                healing = false;
+            } else {
+                healing = true;
+            }
+        }
+//heart
         if (pacman_x % blockSize == 0 && pacman_y % blockSize == 0) {
             pos = pacman_x / blockSize + nBlocks * (int) (pacman_y / blockSize);
             ch = screenData[pos];
@@ -308,6 +367,7 @@ public class Model extends JPanel implements ActionListener {
         lives--;
         if (lives == 0) {
             inGame = false;
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//gameover.wav");
         }
         continueLevel();
     }
@@ -336,11 +396,19 @@ public class Model extends JPanel implements ActionListener {
     }
 
     private void playGame(Graphics2D g2d) {
+//heart---
+        if (healing) {
+            heart_x =getRandomNumberUsingNextInt(2,10)*blockSize;
+            heart_y =getRandomNumberUsingNextInt(2,10)*blockSize;
+            heal();
+            healing=false;
 
+        }
+        //----
         if (dying) {
             death();
         } else {
-            movePacman();
+            movePacman(g2d);
             drawPacman(g2d);
             moveGhosts(g2d);
             checkMaze();
@@ -408,14 +476,15 @@ public class Model extends JPanel implements ActionListener {
         nGhosts=6;
         currentSpeed = 3;
         if(inGame){
-            PlayMusic.playMusic("C:\\Users\\DELL\\IdeaProjects\\Pacman\\src\\sound\\Wakawaka-Sound.wav");
+            PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//PacmanGame//sound//theme.wav");
+            //PlayMusic.playMusic("/Users/nguyencan/Desktop/clone/PacmanGame/sound/pacmantheme.wav");
         }
     }
-
+    
     private void initLevel(){
         int i;
         for(i=0;i<nBlocks * nBlocks;i++){
-            screenData[i] = levelData_2[i];
+            screenData[i] = levelData_2[i]; //<---DRAW MAP2
         }
         continueLevel();
     }
