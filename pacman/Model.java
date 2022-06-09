@@ -476,7 +476,7 @@ public int getHeart_y(int x) {
     private void checkMaze() {
         int i = 0;
         boolean finished = true;
-        while (i < nGhosts*nBlocks && finished){
+        while (i < nBlocks*nBlocks && finished){
             if((screenData[i] & 48) != 0){
                 finished=false;
             }
@@ -570,7 +570,7 @@ public int getHeart_y(int x) {
         dying = false;
     }
     private void continueLevel2(Graphics2D g2d){
-        g2d.clearRect(0,0,getWidth(), getHeight());
+        //g2d.clearRect(0,0,getWidth(), getHeight());
         int dx = 1;
         int random;
 
@@ -611,7 +611,7 @@ public int getHeart_y(int x) {
         lives =3;
         score =0;
         Level2(g2d);
-        nGhosts=6;
+        nGhosts=4;
         currentSpeed = 3;
         if(inGame){
             PlayMusic.playMusic("../PacmanGame/sound/theme.wav");
@@ -621,7 +621,7 @@ public int getHeart_y(int x) {
     private void initLevel(){
         int i;
         for(i=0;i<nBlocks * nBlocks;i++){
-            screenData[i] = levelData[i]; //<---DRAW MAP2
+            screenData[i] = levelData[i]; //<---DRAW MAP1
         }
         continueLevel();
     }
