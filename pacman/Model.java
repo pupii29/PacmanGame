@@ -120,6 +120,7 @@ private void heal() {
         healing=false;
     }else{
     lives++;
+    PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//heal.wav");
     }
 }
 public int getRandomNumberUsingNextInt(int min, int max) {
@@ -485,10 +486,10 @@ public int getHeart_y(int x) {
         lives--;
         if (lives == 0) {
             inGame = false;
-            PlayMusic.playSound("../PacmanGame/sound/gameover.wav");
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//gameover.wav");
         }
         else{
-            PlayMusic.playSound("../PacmanGame/sound/pop.wav");
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//pop.wav");
         }
         continueLevel();
     }
@@ -530,7 +531,7 @@ public int getHeart_y(int x) {
                 }
             heal();
             healing=false;
-            PlayMusic.playSound("../PacmanGame/sound/heal.wav");
+
         }
         //----
         if (dying) {
@@ -634,7 +635,7 @@ public int getHeart_y(int x) {
         nGhosts=4;
         currentSpeed = 3;
         if(inGame){
-            PlayMusic.playMusic("../PacmanGame/sound/theme.wav");
+            PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//PacmanGame//sound//theme.wav");
         }
     }
 
