@@ -217,6 +217,8 @@ public int getHeart_y(int x) {
     //DRAW MAP
     private void drawMaze(Graphics2D g2d) {
 
+        clearMap(g2d);
+
         short i = 0;
         int x, y;
 
@@ -255,10 +257,14 @@ public int getHeart_y(int x) {
             }
         }
     }
+    private void clearMap(Graphics2D g2d){
+        g2d.setColor(Color.black);
+        g2d.fillRect(0, 0, d.width, d.height-35);
+    }
+
     private void drawMazeLevel2(Graphics2D g2d) {
 
-        g2d.setColor(Color.black);
-        g2d.fillRect(0, 0, d.width+2000, d.height+200);
+       clearMap(g2d);
 
         short i = 0;
         int x, y;
@@ -331,7 +337,7 @@ public int getHeart_y(int x) {
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setColor(Color.black);
-        g2d.fillRect(0, 0, d.width+2000, d.height+200);
+        g2d.fillRect(0, 0, d.width, d.height);
 
         drawScore(g2d);
         drawMaze(g2d);
@@ -361,7 +367,6 @@ public int getHeart_y(int x) {
         Toolkit.getDefaultToolkit().sync();
         g2d.dispose();
     }
-
 
     //gamelogic
     private void movePacman(Graphics2D g2d) {
@@ -486,10 +491,6 @@ public int getHeart_y(int x) {
         lives--;
         if (lives == 0) {
             inGame = false;
-            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//gameover.wav");
-        }
-        else{
-            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//pop.wav");
         }
         continueLevel();
     }
@@ -507,13 +508,16 @@ public int getHeart_y(int x) {
             score += 50;
             if (nGhosts < maxGhost) {
                 nGhosts++;
+                
             }
+
+            check++;
 
             if (currentSpeed < maxSpeed) {
                 currentSpeed++;
             }
 
-            initLevel();
+            Level2(null);
         }
     }
 
@@ -629,15 +633,13 @@ public int getHeart_y(int x) {
         currentSpeed = 3;
     }
     private void initGame2(Graphics2D g2d) {
-        PlayMusic x = new PlayMusic();
+        
         lives =3;
         score =0;
         Level2(g2d);
         nGhosts=4;
         currentSpeed = 3;
-        if(inGame){
-            PlayMusic.playMusic("C://Users//DELL//Documents//GitHub//PacmanGame//sound//theme.wav");
-        }
+        
     }
 
     private void initLevel(){
@@ -654,7 +656,6 @@ public int getHeart_y(int x) {
         }
         continueLevel2(g2d);
     }
-
     public Model(){
         loadImages();
         initVariables();
