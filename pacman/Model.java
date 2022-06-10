@@ -519,7 +519,7 @@ public int getHeart_y(int x) {
                 currentSpeed++;
             }
             PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//win.wav");
-            initLevel();
+            Level2(null);
         }
     }
 
