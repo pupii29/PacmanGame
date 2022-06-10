@@ -16,7 +16,7 @@
 <p>Pac-man is a game that all of our members play when they first come into contact with the Internet. And we all love this game so much that we decided to choose this game as a project for OOP.</p>
       
 <h3>d) Contributions: <img src="https://github.com/pupii29/PacmanGame/blob/main/images/ghost.gif"></h3>
-   <p><ol><li>Mai Lê Hùng - ITITIU19125: Ghost, Move Ghost, make report, find ad upload image, game sound</li>
+   <p><ol><li>Mai Lê Hùng - ITITIU19125: Ghost, Move Ghost, make report, find ad upload image, game sound, powerpoint</li>
  <li>Nguyễn Cần  - ITITIU20171: DrawPoint, Healing</li>
  <li>Huỳnh Văn Vĩnh  - ITITIU19248: DrawMap, Check bug of healing</li>
  <li>Nguyễn Trần Hoàng Nam - ITITIU18013: Pacman, Pacman move</li></ol></p>
