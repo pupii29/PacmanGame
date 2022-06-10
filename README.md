@@ -48,6 +48,7 @@ Swing classes are defined in javax.swing package and its sub-packages.<br></p>
   <li>Reset game</li>
   <li>Sound (theme, game over, healing, lose heart)</li>
  <li>Healing</li>
+ <li>Increase level</li>
 </ul>
 Incompleted:<ul>
   <li>Boss</li>
