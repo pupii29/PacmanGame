@@ -120,7 +120,6 @@ private void heal() {
         healing=false;
     }else{
     lives++;
-    PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//heal.wav");
     }
 }
 public int getRandomNumberUsingNextInt(int min, int max) {
@@ -378,6 +377,7 @@ public int getHeart_y(int x) {
                     && pacman_y > (heart_y - 1) && pacman_y < (heart_y + 1)
                     && inGame) {
                 healing = true;
+                PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//heal.wav");
             }}
 //heart
         if (pacman_x % blockSize == 0 && pacman_y % blockSize == 0) {
@@ -530,6 +530,7 @@ public int getHeart_y(int x) {
                     heart_y=20*blockSize;
                 }
             heal();
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//heal.wav");
             healing=false;
 
         }
