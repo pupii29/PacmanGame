@@ -486,7 +486,7 @@ public int getHeart_y(int x) {
         lives--;
         if (lives == 0) {
             inGame = false;
-            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//endgame.wav");
+            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//pacman_death.wav");
         }
         else{
             PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//pop.wav");
@@ -530,7 +530,6 @@ public int getHeart_y(int x) {
                     heart_y=20*blockSize;
                 }
             heal();
-            PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//heal.wav");
             healing=false;
 
         }
