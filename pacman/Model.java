@@ -194,17 +194,25 @@ public int getHeart_y(int x) {
     return y;
 }
 //----
-    //setup
     private void showIntroScreen(Graphics2D g2d) {
         String start = "Press SPACE to start";
         g2d.setColor(Color.yellow);
-        g2d.drawString(start, (screenSize)/4, 150);
+        g2d.drawString(start, ((screenSize)/4)+20, 190);
     }
+
+    private void showWinGAME(Graphics2D g2d) {
+        String start = "YOU WIN";
+        g2d.setColor(Color.yellow);
+        g2d.drawString(start, ((screenSize)/4)+50, 190);
+    }
+
     private void showGameOverScreen(Graphics2D g2d){
         String over = "Press SPACE to retry";
         g2d.setColor(Color.red);
-        g2d.drawString(over, (screenSize)/4, 150);
+        g2d.drawString(over, ((screenSize)/4)+20, 190);
     }
+    
+    
     private void drawScore(Graphics2D g){
         g.setFont(smallFont);
         g.setColor(new Color(10,200,90));
@@ -364,6 +372,11 @@ public int getHeart_y(int x) {
             } else {
                 showIntroScreen(g2d);
             }
+        }
+        
+        if (check == 2){
+            clearMap(g2d);
+            showWinGAME(g2d);
         }
 
         Toolkit.getDefaultToolkit().sync();
@@ -689,15 +702,29 @@ public int getHeart_y(int x) {
                     inGame = false;
                 }
             } else {
-                if (key == KeyEvent.VK_SPACE) {
-                    if(count ==0) {
-                        inGame = true;
-                        initGame();
-                        count++;
+                if (check == 0){
+                    if (key == KeyEvent.VK_SPACE) {
+                        if(count ==0) {
+                            inGame = true;
+                            initGame();
+                            count++;
+                        }
+                        else {
+                            inGame = true;
+                            initGame();
+                        } 
                     }
-                    else {
-                        inGame = true;
-                        initGame();
+                }else if (check == 1){
+                    if (key == KeyEvent.VK_SPACE) {
+                        if(count ==0) {
+                            inGame = true;
+                            initGame2();
+                            count++;
+                        }
+                        else {
+                            inGame = true;
+                            initGame2();
+                        }
                     }
                 }
             }
