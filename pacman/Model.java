@@ -204,6 +204,7 @@ public int getHeart_y(int x) {
         String start = "YOU WIN";
         g2d.setColor(Color.yellow);
         g2d.drawString(start, ((screenSize)/4)+50, 190);
+        inGame = false;
     }
 
     private void showGameOverScreen(Graphics2D g2d){
@@ -533,7 +534,7 @@ public int getHeart_y(int x) {
                 currentSpeed++;
             }
             PlayMusic.playSound("C://Users//DELL//Documents//GitHub//PacmanGame//sound//win.wav");
-            Level2(null);
+            Level2();
         }
     }
 
@@ -610,7 +611,7 @@ public int getHeart_y(int x) {
         req_dy = 0;
         dying = false;
     }
-    private void continueLevel2(Graphics2D g2d){
+    private void continueLevel2(){
         //g2d.clearRect(0,0,getWidth(), getHeight());
         int dx = 1;
         int random;
@@ -647,11 +648,10 @@ public int getHeart_y(int x) {
         nGhosts=2;
         currentSpeed = 3;
     }
-    private void initGame2(Graphics2D g2d) {
-        PlayMusic x = new PlayMusic();
+    private void initGame2() {
         lives =3;
         score =0;
-        Level2(g2d);
+        Level2();
         nGhosts=4;
         currentSpeed = 3;
     }
@@ -663,12 +663,12 @@ public int getHeart_y(int x) {
         }
         continueLevel();
     }
-    private void Level2(Graphics2D g2d){
+    private void Level2(){
         int i;
         for(i=0;i<nBlocks * nBlocks;i++){
             screenData[i] = levelData_2[i]; //<---DRAW MAP2
         }
-        continueLevel2(g2d);
+        continueLevel2();
     }
 
     public Model(){
