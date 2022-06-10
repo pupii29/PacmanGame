@@ -36,7 +36,8 @@ public class Model extends JPanel implements ActionListener {
     private Color mazeColor2 = new Color(255, 236, 139);
     private Color black = new Color(255, 236, 139);
     private final Color dotColor = new Color(52, 179, 241);
-    private int check = 0;
+    private int check = 0; // done map 1 --> check++
+                           // done map 2 --> check = 2
 
     private int pacman_x, pacman_y, pacmand_x, pacmand_y;
     private int req_dx, req_dy;
