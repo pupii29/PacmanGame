@@ -508,7 +508,7 @@ public int getHeart_y(int x) {
             if (nGhosts < maxGhost) {
                 nGhosts++;
             }
-
+            check++;
             if (currentSpeed < maxSpeed) {
                 currentSpeed++;
             }
