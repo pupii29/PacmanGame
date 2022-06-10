@@ -109,7 +109,7 @@ public class Model extends JPanel implements ActionListener {
     private Timer timer;
     //heart----
 private boolean healing =false;
-private int maxLives = 9;
+private int maxLives = 5;
 int heart_x=5*blockSize;
 int heart_y=5*blockSize;
 private void drawHeart(Graphics2D g2d, int x, int y) {
