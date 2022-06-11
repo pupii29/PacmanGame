@@ -18,7 +18,7 @@
 <h3>d) Contributions: <img src="https://github.com/pupii29/PacmanGame/blob/main/images/ghost.gif"></h3>
    <p><ol><li>Mai Lê Hùng - ITITIU19125: Ghost, Move Ghost, make report, find ad upload image, game sound, powerpoint</li>
  <li>Nguyễn Cần  - ITITIU20171: DrawPoint, Healing</li>
- <li>Huỳnh Văn Vĩnh  - ITITIU19248: DrawMap, Check bug of healing</li>
+ <li>Huỳnh Văn Vĩnh  - ITITIU19248: DrawMap, Check bug of healing, next level</li>
  <li>Nguyễn Trần Hoàng Nam - ITITIU18013: Pacman, Pacman move</li></ol></p>
  
 <hr>
