@@ -21,4 +21,4 @@ public class Pacman extends JFrame{
         pacman.setResizable(false);
 
     }
-}
+} 
